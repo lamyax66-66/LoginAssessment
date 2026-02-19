@@ -5,8 +5,12 @@ export default {
     extend: {
       colors: {
         'primary': '#612550',
+        'errorMessage': '#9A0B11'
       },
     },
   },
-  plugins: [],
+   safelist: [
+    'border-errorMessage'
+  ],
+  plugins: [require('daisyui')],
 }
