@@ -13,12 +13,14 @@ export class CustomButton {
   style = input<ButtonStyle>(ButtonStyle.PRIMARY);
   isDisabled = input<boolean>(false);
 
-  tirggerCallBack = output<void>();
+  triggerCallBack = output<void>();
 
   readonly ButtonType = ButtonType;
 
   onClick(): void {
-    this.tirggerCallBack.emit();
+    if(this.isDisabled())
+      return;
+    this.triggerCallBack.emit();
   }
 
 }
