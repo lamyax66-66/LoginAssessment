@@ -5,8 +5,16 @@ export default {
     extend: {
       colors: {
         'primary': '#612550',
+        'error': '#9A0B11',
+        'error-bg': '#E8D0D1',
       },
+      boxShadow: {
+        'error-sh': '0 4px 10px 0 #E9444B40',
+      }
     },
   },
-  plugins: [],
+   safelist: [
+    'border-errorMessage'
+  ],
+  plugins: [require('daisyui')],
 }
