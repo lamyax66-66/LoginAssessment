@@ -1,1 +1,31 @@
-<app-home/>
+<!-- <app-input [type]="InputType.TEXT" placeholder="Username">
+</app-input>
+<app-input [type]="InputType.PASSWORD" placeholder="Password">
+</app-input>
+<app-input [type]="InputType.CHECKBOX" [styleType]="InputStyle.CHECKBOX">
+</app-input> -->
+<form>
+
+  <app-input
+    [control]="username"
+    [placeholder]="'Enter username'">
+  </app-input>
+
+  <app-input
+    [control]="password"
+    [type]="InputType.PASSWORD"
+    [placeholder]="'Enter password'">
+  </app-input>
+
+  <div class="flex items-center justify-between mt-4">
+    <label class="flex items-center gap-2 cursor-pointer">
+      <input type="checkbox" class="w-4 h-4 accent-primary" />
+      Remember me
+    </label>
+
+    <a href="#" class="text-sm underline">
+      Forgot password?
+    </a>
+  </div>
+
+</form>
