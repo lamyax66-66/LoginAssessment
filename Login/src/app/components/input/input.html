@@ -1,0 +1,21 @@
+<div class="input-wrapper">
+  <input
+    [type]="type()"
+    [formControl]="control()"
+    [attr.placeholder]="placeholder()"
+    class="input-field"
+    [class.input-error]="hasError"
+  />
+
+  @if (errors()?.length && hasError) {
+    <div class="error-text">
+
+      @for (error of errors(); track error.message) {
+        @if (hasErrorByType(error.types)) {
+          <div>{{ error.message }}</div>
+        }
+      }
+
+    </div>
+  }
+</div>
