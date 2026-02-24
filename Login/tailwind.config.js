@@ -1,6 +1,6 @@
 /** @type {import('tailwindcss').Config} */
-export default {
-  content: ["./src/**/*.{html,ts}"],
+module.exports = {
+  content: ["./src/**/*.{html,js}"],
   theme: {
     extend: {
       backgroundImage: {
@@ -25,3 +25,4 @@ export default {
   ],
   plugins: [require('daisyui')],
 }
+
