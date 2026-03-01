@@ -6,12 +6,12 @@ export enum MessageStyle {
 };
 
 @Component({
-  selector: 'app-temp-messgage',
+  selector: 'app-temp-message',
   imports: [],
-  templateUrl: './temp-messgage.html',
+  templateUrl: './temp-message.html',
 })
 
-export class TempMessgage {
+export class TempMessage {
 
   style = input<MessageStyle>(MessageStyle.ERROR);
 
