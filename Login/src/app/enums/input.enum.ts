@@ -10,9 +10,5 @@ export enum InputStyle {
 };
 export enum ValidatorType {
   required,
-  pattern,
-  maxlength,
   minlength,
-  max,
-  min
 }

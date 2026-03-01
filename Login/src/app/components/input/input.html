@@ -1,21 +1,17 @@
 <div class="input-wrapper">
-  <input
-    [type]="type()"
-    [formControl]="control()"
-    [attr.placeholder]="placeholder()"
-    class="input-field"
-    [class.input-error]="hasError"
-  />
-
-  @if (errors()?.length && hasError) {
-    <div class="error-text">
-
+  <input [type]="type()" [formControl]="control()" [attr.placeholder]="placeholder()"
+    [class]="isCheckbox() ? InputType.CHECKBOX : inputClass()" />
+  <div class="min-h-14 mt-1">
+    @if (errors()?.length && hasError) {
       @for (error of errors(); track error.message) {
         @if (hasErrorByType(error.types)) {
-          <div>{{ error.message }}</div>
+          <app-temp-message>
+            {{ error.message }}
+          </app-temp-message>
         }
       }
-
-    </div>
-  }
+    }
+  </div>
 </div>
+
+

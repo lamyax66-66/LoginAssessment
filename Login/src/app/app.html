@@ -1,31 +1,30 @@
-<!-- <app-input [type]="InputType.TEXT" placeholder="Username">
-</app-input>
-<app-input [type]="InputType.PASSWORD" placeholder="Password">
-</app-input>
-<app-input [type]="InputType.CHECKBOX" [styleType]="InputStyle.CHECKBOX">
-</app-input> -->
-<form>
-
-  <app-input
-    [control]="username"
-    [placeholder]="'Enter username'">
-  </app-input>
-
-  <app-input
-    [control]="password"
-    [type]="InputType.PASSWORD"
-    [placeholder]="'Enter password'">
-  </app-input>
-
-  <div class="flex items-center justify-between mt-4">
-    <label class="flex items-center gap-2 cursor-pointer">
-      <input type="checkbox" class="w-4 h-4 accent-primary" />
-      Remember me
-    </label>
-
-    <a href="#" class="text-sm underline">
-      Forgot password?
-    </a>
-  </div>
-
+<form [formGroup]="userForm" class="space-y-4">
+    <!-- Username -->
+    <app-input [control]="usernameControl" [placeholder]="'Enter your username'" [errors]="[
+      { message: 'Username is required', types: [ValidatorType.required] }
+    ]">
+    </app-input>
+    <!-- Password -->
+    <app-input [control]="passwordControl" [type]="InputType.PASSWORD" [placeholder]="'Enter your password'" [errors]="[
+      { message: 'Password is required', types: [ValidatorType.required] },
+      { message: 'Minimum 8 characters', types: [ValidatorType.minlength] }
+    ]">
+    </app-input>
+    <!-- Remember Checkbox -->
+    <div class="flex items-center justify-between mt-4">
+        <label class="flex items-center gap-2 cursor-pointer">
+            <app-input [control]="rememberControl" [type]="InputType.CHECKBOX">
+            </app-input>
+            Remember me
+        </label>
+        <a href="#" class="text-sm underline">
+            Forgot password?
+        </a>
+    </div>
+    @if (rememberControl.touched && rememberControl.errors?.['required']) {
+    <app-temp-message>
+        You must accept this option
+    </app-temp-message>
+    }
+    <app-custom-button>Login</app-custom-button>
 </form>

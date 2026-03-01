@@ -1,6 +1,8 @@
 import { Component, computed, input } from '@angular/core';
 import { InputStyle, InputType, ValidatorType } from '../../enums/input.enum';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
+import { TempMessage } from '../temp-messgage/temp-message';
+
 
 export class InputErrorMessage {
   message: string;
@@ -14,7 +16,7 @@ export class InputErrorMessage {
 
 @Component({
   selector: 'app-input',
-  imports: [ReactiveFormsModule],
+  imports: [ReactiveFormsModule,TempMessage],
   templateUrl: './input.html',
 })
 export class Input {
@@ -24,31 +26,26 @@ export class Input {
   placeholder = input<string>('');
   showErrorOnSubmit = input<boolean>(false);
   errors = input<InputErrorMessage[]>();
-
-  readonly InputType = InputType;
-  // readonly InputStyle = InputStyle;
-
   isCheckbox = computed(() => this.type() === InputType.CHECKBOX);
+  lable = input<string>('');
+  readonly InputType = InputType;
 
   get hasError(): boolean {
     const control = this.control();
     if (!control?.errors) {
       return false;
     }
-
     if (control.touched) {
       return true;
     }
     return false;
   }
-
   hasErrorByType(validatorTypes: ValidatorType[]): boolean {
     for (const validatorType of validatorTypes) {
       if (this.control()?.errors?.[ValidatorType[validatorType]]) {
         return this.hasError;
       }
     }
-
     return false;
   }
   inputClass = computed(() =>
