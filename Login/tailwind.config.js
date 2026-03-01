@@ -10,10 +10,11 @@ module.exports = {
       },
       colors: {
         'primary': '#612550',
-        'back-ground':'#F8F8F8',
+        'page-bg':'#F8F8F8',
         'error': '#9A0B11',
         'error-bg': '#E8D0D1',
         'gray': '#636364',
+        'div': '#D9D9D9'
       },
       boxShadow: {
         'error-sh': '0 4px 10px 0 #E9444B40',
