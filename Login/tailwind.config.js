@@ -1,6 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: ["./src/**/*.{html,js}"],
+  content: ["./src/**/*.{html,ts}"],
   theme: {
     extend: {
       backgroundImage: {
@@ -14,16 +14,15 @@ module.exports = {
         'error': '#9A0B11',
         'error-bg': '#E8D0D1',
         'gray': '#636364',
-        'gray-2': '#D9D9D9'
       },
       boxShadow: {
         'error-sh': '0 4px 10px 0 #E9444B40',
       }
-    },
   },
    safelist: [
     'border-errorMessage'
   ],
   plugins: [],
+}
 }
 

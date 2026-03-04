@@ -1,0 +1,28 @@
+<div class="input-wrapper">
+  @if (!isCheckbox() && label()) {
+    <label class="block mb-2 font-semibold" [class.text-error]="hasError">
+      {{ label() }}
+    </label>
+  }
+  <input [type]="type()" [formControl]="control()" [attr.placeholder]="placeholder()"
+    [class]="isCheckbox() ? 'checkbox' : 'rounded-md p-2 w-full border border-gray-300 transition'" 
+    [class.border-error]="hasError"/>
+     @if (isCheckbox()) {
+    <span class="text-sm" [class.text-error]="hasError">
+      {{ label() || placeholder() }}
+    </span>
+    }
+  <div class="mt-1">
+    @if (errors()?.length && hasError) {
+      @for (error of errors(); track error.message) {
+        @if (hasErrorByType(error.types)) {
+          <app-message>
+            {{ error.message }}
+          </app-message>
+        }
+      }
+    }
+  </div>
+</div>
+
+
