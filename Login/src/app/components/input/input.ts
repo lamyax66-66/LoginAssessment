@@ -1,33 +1,24 @@
 import { Component, computed, input } from '@angular/core';
-import { InputStyle, InputType, ValidatorType } from '../../enums/input.enum';
+import { InputType, ValidatorType } from '../../enums/input.enum';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
-import { TempMessage } from '../temp-messgage/temp-message';
-
-
-export class InputErrorMessage {
-  message: string;
-  types: ValidatorType[];
-
-  constructor(message: string, types: ValidatorType[]) {
-    this.message = message;
-    this.types = types;
-  }
-}
+import { Message } from '../message/message';
+import { InputErrorMessage } from '../../models/input-error-message';
 
 @Component({
   selector: 'app-input',
-  imports: [ReactiveFormsModule,TempMessage],
+  imports: [ReactiveFormsModule, Message],
   templateUrl: './input.html',
 })
 export class Input {
   control = input.required<FormControl>();
   type = input<InputType>(InputType.TEXT);
-  styleType = input<InputStyle>(InputStyle.DEFAULT);
   placeholder = input<string>('');
   showErrorOnSubmit = input<boolean>(false);
   errors = input<InputErrorMessage[]>();
+  label = input<string>('');
+
   isCheckbox = computed(() => this.type() === InputType.CHECKBOX);
-  lable = input<string>('');
+
   readonly InputType = InputType;
 
   get hasError(): boolean {
@@ -48,7 +39,4 @@ export class Input {
     }
     return false;
   }
-  inputClass = computed(() =>
-    this.hasError ? InputStyle.ERROR : this.styleType()
-  );
 }

@@ -1,30 +1,38 @@
 <form [formGroup]="userForm" class="space-y-4">
     <!-- Username -->
-    <app-input [control]="usernameControl" [placeholder]="'Enter your username'" [errors]="[
-      { message: 'Username is required', types: [ValidatorType.required] }
-    ]">
+    <app-input
+     [label]="'Username'"
+     [control]="usernameControl"
+     [placeholder]="'Enter your username'"
+     [errors]="usernameErrors">
     </app-input>
     <!-- Password -->
-    <app-input [control]="passwordControl" [type]="InputType.PASSWORD" [placeholder]="'Enter your password'" [errors]="[
-      { message: 'Password is required', types: [ValidatorType.required] },
-      { message: 'Minimum 8 characters', types: [ValidatorType.minlength] }
-    ]">
+    <app-input
+     [label]="'Password'"
+     [control]="passwordControl"
+     [type]="InputType.PASSWORD"
+     [placeholder]="'Enter your password'"
+     [errors]="passwordErrors">
     </app-input>
     <!-- Remember Checkbox  -->
     <div class="flex items-center justify-between mt-4">
-        <label class="flex items-center gap-2 cursor-pointer">
-            <app-input [control]="rememberControl" [type]="InputType.CHECKBOX">
-            </app-input>
-            Remember me
-        </label>
+       <div><app-input
+         [label]="'Remember me'"
+         [control]="rememberControl"
+         [type]="InputType.CHECKBOX">
+        </app-input></div>
+        <div>
         <a href="#" class="text-sm underline">
             Forgot password?
         </a>
+        </div>
     </div>
     @if (rememberControl.touched && rememberControl.errors?.['required']) {
-    <app-temp-message>
+    <app-message>
         You must accept this option
-    </app-temp-message>
+    </app-message>
     }
+    <div>
     <app-custom-button>Login</app-custom-button>
+    </div>
 </form>

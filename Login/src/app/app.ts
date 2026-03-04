@@ -1,13 +1,14 @@
 import { Component, signal } from '@angular/core';
 import { Input } from './components/input/input';
-import { InputStyle, InputType, ValidatorType } from './enums/input.enum';
+import { InputType, ValidatorType } from './enums/input.enum';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { CustomButton } from './components/custom-button/custom-button';
-import { TempMessage } from './components/temp-messgage/temp-message';
+import { Message } from './components/message/message';
+
 
 @Component({
   selector: 'app-root',
-  imports: [Input, ReactiveFormsModule, CustomButton,TempMessage],
+  imports: [Input, ReactiveFormsModule, CustomButton,Message],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })
@@ -28,7 +29,13 @@ export class App {
   get rememberControl(): FormControl {
     return this.userForm.get('remember') as FormControl;
   }
+  usernameErrors = [
+    { message: 'Username is required', types: [ValidatorType.required] }
+  ];
+  passwordErrors = [
+    { message: 'Password is required', types: [ValidatorType.required] },
+    { message: 'Minimum 8 characters', types: [ValidatorType.minlength] }
+  ];
   readonly ValidatorType = ValidatorType;
   readonly InputType = InputType;
-  readonly InputStyle = InputStyle;
 }
