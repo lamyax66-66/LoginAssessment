@@ -15,13 +15,12 @@ import { SessionStorageKeys } from '../../enums/session-storage-keys';
 })
 export class Login {
   router = inject(Router);
- login() {
-  this.userForm.markAllAsTouched();
-  //if (this.userForm.invalid) return;
-  sessionStorage.setItem(SessionStorageKeys.LOGGED_IN, 'true');
-  sessionStorage.setItem(MediaSession, this.usernameControl.value);
-  this.router.navigate(['/home']);
-}
+  login() {
+    this.userForm.markAllAsTouched();
+    sessionStorage.setItem(SessionStorageKeys.LOGGED_IN, 'true');
+    sessionStorage.setItem(SessionStorageKeys.USERNAME, this.usernameControl.value);
+    this.router.navigate(['/home']);
+  }
   userForm: FormGroup = new FormGroup({
     username: new FormControl('', { validators: [Validators.required] }),
     password: new FormControl('', { validators: [Validators.required, Validators.minLength(8)] }),

@@ -6,15 +6,12 @@ import { SessionStorageKeys } from './enums/session-storage-keys';
 
 @Component({
   selector: 'app-root',
-  imports: [Login, Navbar, RouterOutlet],
+  imports: [Navbar, RouterOutlet],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })
 export class App {
   protected readonly title = signal('Login');
-
-     
-
     get isLoggedIn() {
     return sessionStorage.getItem(SessionStorageKeys.LOGGED_IN) === 'true';
   }
