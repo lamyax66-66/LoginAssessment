@@ -1,13 +1,38 @@
 <div class="min-h-screen flex flex-col sm:flex-row">
- <div class="flex bg-page-bg justify-center items-center">
-        <section id="form-header" class="mb-6 text-center">
-            <header>
-            <h1 class="text-2xl sm:text-3xl lg:text-4xl font-semibold tracking-widest text-black">LOGIN</h1>
-            <p class="mt-2 text-sm sm:text-base lg:text-lg text-gray">Please enter your credentials</p>
+    <div class="flex w-full sm:w-1/2 bg-tahakom-gradient justify-center items-center">
+        <img src="assets/imgs/tahakom-logo.svg" alt="Tahakom logo" class="size-1/2" />
+    </div>
+    <div class="flex w-full sm:w-1/2 bg-page-bg justify-center items-center">
+        <section id="form-header" class="mb-6 w-full max-w-sm">
+            <header class="text-center">
+                <h1 class="text-2xl sm:text-3xl lg:text-4xl font-semibold tracking-widest text-black">LOGIN</h1>
+                <p class="mt-2 text-sm sm:text-base lg:text-lg text-gray">Please enter your credentials</p>
             </header>
+            <form [formGroup]="userForm" class="mt-6" (ngSubmit)="login()">
+                <app-input [label]="'Username'" [control]="usernameControl" [placeholder]="'Enter your username'"
+                    [errors]="usernameErrors">
+                </app-input>
+                <app-input [label]="'Password'" [control]="passwordControl" [type]="InputType.PASSWORD"
+                    [placeholder]="'Enter your password'" [errors]="passwordErrors">
+                </app-input>
+                <div class="flex items-center justify-between">
+                    <app-input [label]="'Remember me'" [control]="rememberControl" [type]="InputType.CHECKBOX">
+                        </app-input>
+                    <div class="text-sm underline">
+                        Forgot password?
+                    </div>
+                </div>
+                <div>
+                    @if (rememberControl.touched && rememberControl.errors?.['requiredTrue']) {
+                    <app-message>
+                        You must accept this option
+                    </app-message>
+                    }
+                </div>
+                <div class="mt-1">
+                    <app-custom-button [buttonType]="ButtonType.SUBMIT">Login</app-custom-button>
+                </div>
+            </form>
         </section>
     </div>
-    <div class="flex w-full md:w-1/2 bg-tahakom-gradient justify-center items-center">
-        <img src="assets/imgs/tahakom-logo.svg" alt="Tahakom logo" class="size-1/2" />
-    </div> 
 </div>
