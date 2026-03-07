@@ -4,15 +4,21 @@
       {{ label() }}
     </label>
   }
-  <input [type]="type()" [formControl]="control()" [attr.placeholder]="placeholder()"
-    [class]="isCheckbox() ? 'checkbox' : 'rounded-md p-2 w-full border border-gray-300 transition'" 
-    [class.border-error]="hasError"/>
-     @if (isCheckbox()) {
-    <span class="text-sm" [class.text-error]="hasError">
+   @if (isCheckbox()) {
+    <input type="checkbox" [formControl]="control()" class="checkbox" />
+     <span class="text-sm" [class.text-error]="hasError">
       {{ label() || placeholder() }}
     </span>
-    }
-  <div class="mt-1">
+  } @else {
+    <input
+      [type]="type()"
+      [formControl]="control()"
+      [attr.placeholder]="placeholder()"
+      class="rounded-md p-2 w-full border border-gray-300 transition"
+      [class.border-error]="hasError"
+    />
+  }
+  <div class="mt-1" [class.min-h-[35px]]="!isCheckbox()">
     @if (errors()?.length && hasError) {
       @for (error of errors(); track error.message) {
         @if (hasErrorByType(error.types)) {

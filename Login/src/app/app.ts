@@ -15,5 +15,4 @@ export class App {
     get isLoggedIn() {
     return sessionStorage.getItem(SessionStorageKeys.LOGGED_IN) === 'true';
   }
- 
 }

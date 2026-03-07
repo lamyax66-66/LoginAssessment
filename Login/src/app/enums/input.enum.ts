@@ -6,4 +6,5 @@ export enum InputType {
 export enum ValidatorType {
   required,
   minlength,
+  pattern
 }
