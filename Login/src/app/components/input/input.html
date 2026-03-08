@@ -16,6 +16,7 @@
       [attr.placeholder]="placeholder()"
       class="rounded-md p-2 w-full border border-gray-300 transition"
       [class.border-error]="hasError"
+      [attr.maxlength]="maxLength()"
     />
   }
   <div class="mt-1" [class.min-h-[35px]]="!isCheckbox()">

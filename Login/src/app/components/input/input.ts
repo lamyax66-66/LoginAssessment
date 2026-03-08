@@ -16,6 +16,7 @@ export class Input {
   showErrorOnSubmit = input<boolean>(false);
   errors = input<InputErrorMessage[]>();
   label = input<string>('');
+  maxLength = input<number>();
 
   isCheckbox = computed(() => this.type() === InputType.CHECKBOX);
 
