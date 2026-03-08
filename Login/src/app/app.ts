@@ -5,6 +5,8 @@ import { RouterOutlet } from '@angular/router';
 import { SessionStorageKeys } from './enums/session-storage-keys';
 import { TranslatePipe, TranslateService } from '@ngx-translate/core';
 import { CustomButton } from "./components/custom-button/custom-button";
+import { Language } from './enums/language';
+import { LanguageService } from './service/language/language-service';
 
 @Component({
   selector: 'app-root',
@@ -19,22 +21,16 @@ export class App {
   // }
 
   private translate = inject(TranslateService);
+  languageService = inject(LanguageService);
 
-  currentLang = 'en';
+  Language = Language;
 
   constructor() {
-    this.translate.setDefaultLang('en');
-    this.translate.use('en');
+    this.translate.setFallbackLang(Language.ARABIC);
+    this.translate.use(Language.ARABIC);
   }
 
   toggleLanguage() {
-    this.currentLang = this.currentLang === 'en' ? 'ar' : 'en';
-    this.translate.use(this.currentLang);
-
-     if (this.currentLang === 'ar') {
-    document.documentElement.dir = 'rtl';
-  } else {
-    document.documentElement.dir = 'ltr';
-  }
+    this.languageService.changeLanguage();
   }
 }
