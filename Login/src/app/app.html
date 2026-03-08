@@ -6,5 +6,5 @@
 <p>{{ 'WELCOME' | translate }}</p>
 
 <app-custom-button (click)="toggleLanguage()"> 
-   {{ currentLang === 'en' ? 'العربية' : 'English' }}
+   {{ currentLang === Language.ENGLISH ? ('BUTTON.ARABIC' | translate) : ('BUTTON.ENGLISH' | translate) }}
 </app-custom-button>
