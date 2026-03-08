@@ -1,4 +1,10 @@
-@if (isLoggedIn) {
+<!-- @if (isLoggedIn) {
   <app-navbar/>
 }
-<router-outlet/>
+<router-outlet/> -->
+
+<p>{{ 'WELCOME' | translate }}</p>
+
+<app-custom-button (click)="toggleLanguage()"> 
+   {{ currentLang === 'en' ? 'العربية' : 'English' }}
+</app-custom-button>
